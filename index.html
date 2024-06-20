@@ -20,15 +20,22 @@
         const canvasEl = document.querySelector("canvas"),
             canvasCtx = canvasEl.getContext("2d");
         const lineWidth = 15
-
+        //Criação do objeto campo
+        const field = {
+            w:window.innerWidth,
+            h:window.innerHeight,
+            draw:function() {
+                canvasCtx.fillStyle = "#286047";
+                canvasCtx.fillRect(0, 0, window.innerWidth, window.innerHeight)
+            },
+        }
         function setup() {
-            canvasEl.width = canvasCtx.width = window.innerWidth
-            canvasEl.height = canvasCtx.height = window.innerHeight
+            canvasEl.width = canvasCtx.width = field.w
+            canvasEl.height = canvasCtx.height = field.h
         }
         function draw() {
-            canvasCtx.fillStyle = "#286047";
-            canvasCtx.fillRect(0, 0, window.innerWidth, window.innerHeight)
-
+            
+            field.draw()
 
             //divisa do campo
             canvasCtx.fillStyle = "#FFFFFF";
@@ -41,7 +48,7 @@
             canvasCtx.arc(500, 300, 20, 0, 2 * Math.PI, false)
             canvasCtx.fill()
             //Desenhar o placar
-            canvasCtx.font = "bold 100 Arial"
+            canvasCtx.font = "bold 100px Arial"
             canvasCtx.textAlign = "center"
             canvasCtx.textBaseline = "top"
             canvasCtx.fillStyle = "#01341D"
